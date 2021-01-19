@@ -1,0 +1,35 @@
+alias update='yay -Pw && yay'
+alias dotfile='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+
+alias ..='cd ..'
+
+alias cp='cp -Riv'
+alias mv='mv -vi'
+alias rm='rm -vIR'
+alias mkdir='mkdir -pv'
+
+alias c='clear'
+alias h='cd ~'
+alias r='cd /'
+
+alias l='exa --group-directories-first'
+alias ll='exa -lg --group-directories-first'
+alias la='exa -lag --group-directories-first'
+alias lm='exa -lgs modified --group-directories-first'
+alias lmr='exa -lgs modified --group-directories-first --reverse'
+
+alias ports='ss -tulanp'
+
+
+alias untar='tar -zxvf1'
+
+alias myip='curl ipinfo.io/ip'
+alias hostname='cat /etc/hostname'
+
+alias sudo='sudo '
+alias fuck='sudo $(fc -ln -1)'
+
+alias now='echo "------------------" && echo "Day  : `date '+%A'`" && echo "Date : `date '+%Y-%m-%d'`" && echo "Time : `date '+%H:%M'`" && echo "------------------"'
+
+alias nf='clear && neofetch | lolcat'

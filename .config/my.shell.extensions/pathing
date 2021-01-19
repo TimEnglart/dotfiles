@@ -1,0 +1,65 @@
+#
+# Pyhton (pyenv)
+#
+quick_export PYENV_ROOT "$HOME/.pyenv"
+quick_export PATH "$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+#
+# Go (goenv)
+#
+quick_export GOENV_ROOT "$HOME/.goenv"
+quick_export PATH "$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+quick_export PATH "$GOROOT/bin:$PATH"
+quick_export PATH "$PATH:$GOPATH/bin"
+
+
+
+#
+# Node Js (nodenv)
+#
+quick_export PATH "$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
+
+#
+# Ruby (rbenv)
+#
+quick_export PATH "$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+#
+# Lua (luaenv)
+#
+quick_export PATH "$HOME/.luaenv/bin:$PATH"
+eval "$(luaenv init -)"
+
+#
+# Java (jenv)
+#
+quick_export PATH "$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+#
+# Perl (plenv)
+#
+quick_export PATH "$HOME/.plenv/bin:$PATH"
+eval "$(plenv init -)"
+
+#
+# PHP (phpenv)
+#
+quick_export PATH "$HOME/.phpenv/bin:$PATH"
+eval "$(phpenv init -)"
+
+#
+# HOME Bin
+#
+quick_export PATH "$HOME/bin":$PATH
+
+
+
+
+
