@@ -3,7 +3,7 @@
 #-------------------------------------------------------------
 ii()
 {
-    echo -e "${Red}You are logged on: $NC " ; hostname
+    echo -e "${Red}You are logged on: $NC " ; cat /etc/hostname
     echo " "
     echo -e "${Red}Additionnal information: $NC " ; uname -a
     echo " "
@@ -15,8 +15,8 @@ ii()
     echo " "
     echo -e "${Red}Internal IP Address: $NC " ; ip
     echo " "
-    echo -e "${Red}Public facing IP Address: $NC " ; myip
-    echo
+    echo -e "${Red}Public facing IP Address: $NC " ; curl ipinfo.io/ip
+    echo " "
 }
 
 #-------------------------------------------------------------
@@ -24,7 +24,6 @@ ii()
 #-------------------------------------------------------------
 perms(){
     echo " "
-    echo -e "drwxrwxrwx = ${Red}777$NC  (Directory) All can read, write & execute"
     echo -e "-rwxrwxrwx = ${Red}777$NC  All can read, write & execute"
     echo -e "-rwxrwxr-x = ${Green}775$NC  Owner/Group read, write & execute. Others can read, execute"
     echo -e "-rwxrwxr-- = ${Yellow}774$NC  Owner/Group read, write & execute. Others can read"
@@ -34,9 +33,10 @@ perms(){
     echo -e "-rw-r--r-- = ${White}664$NC  Owner/Group read, write. Others can read"
     echo -e "-rwx------ = ${Red}644$NC  Owner can read & write. Others can read"
     echo " "
-    echo -e "---s------ = ${Green}4---$NC  (Setuid) Executing User is Treated as the Owning User"
-    echo -e "-----s--- = ${Green}2---$NC  (Setgid) Executing Users Groups are Treated as the Owning Users Groups"
-    echo -e "--------t = ${Green}2---$NC  (Sticky Bit) Only the file's owner, the directory's owner, or root user can rename or delete"
+    echo -e "d--------- = ${Cyan}777$NC  Directory Flag"
+    echo -e "---s------ = ${Yellow}4---$NC  (Setuid) Executing User is Treated as the Owning User"
+    echo -e "------s--- = ${Blue}2---$NC  (Setgid) Executing Users Groups are Treated as the Owning Users Groups"
+    echo -e "---------t = ${White}2---$NC  (Sticky Bit) Only the file's owner, the directory's owner, or root user can rename or delete"
     echo " "
 }
 
@@ -47,6 +47,7 @@ perms(){
 quick_export() {
     if [ ! -d "$2" ] || [ -L "$2" ] ; then
         export $1="$2"
+        return 0
     fi
-    # Silently Drop if it doesn't exist
+    return 1
 }
