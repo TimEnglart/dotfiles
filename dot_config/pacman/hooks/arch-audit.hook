@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Auditing Installed Packages...
+Depends = curl
+Depends = openssl
+Depends = arch-audit
+When = PostTransaction
+Exec = /usr/bin/arch-audit
