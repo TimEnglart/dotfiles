@@ -13,6 +13,8 @@ do
 	. $filename
 done
 
+export GPG_TTY=$(tty)
+
 
 export PICO_SDK_PATH=/home/tim/labs-TimEnglart/pico-sdk
 export PICO_EXAMPLES_PATH=/home/tim/labs-TimEnglart/pico-examples
