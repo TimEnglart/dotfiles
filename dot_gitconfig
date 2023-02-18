@@ -2,7 +2,6 @@
 	email = timenglartdev@gmail.com
 	name = Tim Englart
 [credential]
-	helper = 
 	helper = /usr/sbin/git-credential-manager
 	credentialStore = gpg
 [credential "https://dev.azure.com"]
