@@ -1,5 +1,0 @@
-color: on
-mode: symlink
-progress: true
-git:
-    autoPush: true
