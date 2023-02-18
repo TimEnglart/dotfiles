@@ -1,0 +1,4 @@
+[".scripts/wsl-sudo"]
+    type = "git-repo"
+    url = "https://github.com/Chronial/wsl-sudo.git"
+    refreshPeriod = "168h"
