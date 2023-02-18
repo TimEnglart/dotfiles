@@ -8,3 +8,4 @@
 fish_add_path $HOME/.scripts/bin
 # Register the OS as an environment var, detected by the OS script 
 set -gx OS (os)
+set -gx GPG_TTY (tty)
