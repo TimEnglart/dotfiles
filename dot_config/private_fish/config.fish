@@ -8,4 +8,9 @@
 fish_add_path $HOME/.scripts/bin
 # Register the OS as an environment var, detected by the OS script 
 set -gx OS (os)
-set -gx GPG_TTY (tty)
+
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+    set -gx GPG_TTY (tty)
+    set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
+end
