@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+function log () {
+    printf "%s %s\n" "->" "$@"
+}
+log "Updating asdf"
+asdf update >/dev/null 2>&1
+
+log "Updating all asdf-plugin remotes..."
+asdf plugin update --all >/dev/null 2>&1
+
+log "Updating each plugin reference to the latest revision..."
+
+# TODO: Maybe refactor this shit, ew.
+cat ~/.tool-versions \
+| awk '{print $1}' \
+| xargs -I {} bash -c 'echo {} $(asdf latest {})' > ~/.tool-versions.new; \
+cp ~/.tool-versions ~/.tool-versions.bk; \
+
+log "Version Changes:"
+diff -dya --suppress-common-lines .tool-versions .tool-versions.new
+
+while true; do
+    read -p "Do you wish to install all new revisions? " yn
+    case $yn in
+	    [Yy]* ) cp ~/.tool-versions ~/.tool-versions.bk; mv ~/.tool-versions.new ~/.tool-versions; asdf install; asdf break;;
+        [Nn]* ) exit;;
+        * ) log "Please answer Yes or No.";;
+    esac
+done
+
+log "Done, bye! 👋"
