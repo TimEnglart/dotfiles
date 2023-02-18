@@ -1,0 +1,18 @@
+[Unit]
+Description=Setup a secure tunnel to Consul
+After=network.target
+
+[Service]
+#Environment="SSH_AUTH_SOCK=/run/user/1000/ssh-agent.socket"
+#EnvironmentFile=$HOME/.consul/consul-session@%i
+ExecStart=/usr/bin/ssh -o StrictHostKeyChecking=no -F /home/%u/.ssh/config -NT %u@ict-util.jcu.edu.au
+StartLimitInterval=90  
+StartLimitBurst=2
+
+
+# Restart every >2 seconds to avoid StartLimitInterval failure
+RestartSec=5000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
