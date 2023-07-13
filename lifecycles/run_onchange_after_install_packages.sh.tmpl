@@ -1,0 +1,9 @@
+{{ if eq .osid "darwin" }}
+# macOS-specific code
+{{ else if eq .osid "linux-debian" }}
+# Debian-specific code
+{{ else if eq .osid "linux-fedora" }}
+# Fedora-specific code
+{{ end }}
+
+echo "{{ .osid }}"
