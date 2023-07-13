@@ -1,12 +1,12 @@
-encryption = "age"
-[age]
-    identity = "{{ .chezmoi.sourceDir }}/key.txt"
-    recipient = "age1d5ctgtaxmhl5laasypzvzqhmgajx0gdmg40w7xvvkqjt0u8p6yxqujj9lh"
-
 {{- $osid := .chezmoi.os -}}
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
+
+encryption = "age"
+[age]
+    identity = "{{ .chezmoi.sourceDir }}/key.txt"
+    recipient = "age1d5ctgtaxmhl5laasypzvzqhmgajx0gdmg40w7xvvkqjt0u8p6yxqujj9lh"
 
 [data]
     osid = {{ $osid | quote }}
