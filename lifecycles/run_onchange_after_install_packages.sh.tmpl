@@ -1,9 +1,16 @@
+#!/bin/bash
+
+GENERIC_PACKAGES=(git chezmoi)
+
 {{ if eq .osid "darwin" }}
 # macOS-specific code
 {{ else if eq .osid "linux-debian" }}
 # Debian-specific code
 {{ else if eq .osid "linux-fedora" }}
 # Fedora-specific code
-{{ end }}
+{{ else if eq .osid "linux-arch" }}
+SPECIFIC_PACKAGES=()
+AUR_PACKAGES=()
 
-echo "{{ .osid }}"
+echo pacman --needed -Sy "${GENERIC_PACKAGES[@]}" "${SPECIFIC_PACKAGES[@]}"
+{{ end }}
