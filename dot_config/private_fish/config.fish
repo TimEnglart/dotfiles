@@ -9,6 +9,8 @@ fish_add_path $HOME/.scripts/bin
 # Register the OS as an environment var, detected by the OS script 
 set -gx OS (os)
 
+direnv hook fish | source
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
     set -gx GPG_TTY (tty)
